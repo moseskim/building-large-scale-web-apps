@@ -33,8 +33,7 @@ let number: number = 5;
 // 다른 코드
 
 /*
-  Type 'string' is not assignable to type
-  'number'.ts(2322)
+  Type 'string' is not assignable to type 'number'.ts(2322)
 */
 number = "5";
 ```
@@ -142,8 +141,8 @@ const App = () => {
       Type 'number' is not assignable to type 'string'.
       Type 'string' is not assignable to type 'number'.
 
-      (타입 'number'은 타입 'string'에 할당할 수 없다.)
-      (타입 'string'은 타입 'number'에 할당할 수 없다.)
+      (타입 'number'는 타입 'string'에 할당할 수 없습니다.)
+      (타입 'string'은 타입 'number'에 할당할 수 없습니다.)
     */
     <Person name={42} age={"twenty"} />
   );
@@ -249,11 +248,9 @@ const Counter: React.FC = () => {
   const updateCount = () => {
     /*
       TypeScript Error:
-      Argument of type 'string' is not
-      assignable to parameter of type
-      'number | ((prevState: number) => number)'.
+      Argument of type 'string' is not assignable to parameter of type 'number | ((prevState: number) => number)'.
 
-      ('string' 타입 인수는 'number | ((prevState: number) => number)' 타입 인수에 할당할 수 없다.)
+      ('string' 타입 인수는 'number | ((prevState: number) => number)' 타입 인수에 할당할 수 없습니다.)
     */
    setCount("5");
   };
@@ -318,16 +315,9 @@ const Counter = () => {
   const wrongUpdate = () => {
     /*
       TypeScript Error:
-      Argument of type '{ type: 'multiply' }'
-      is not assignable to parameter of type
-      'Action'. Object literal may only specify
-      known properties, and 'type' does not
-      exist in type 'Action'.
+      Argument of type '{ type: 'multiply' }' is not assignable to parameter of type 'Action'. Object literal may only specify known properties, and 'type' does not exist in type 'Action'.
 
-      타입 '{ type: 'multiply' }'인 인수는 
-      타입 'Action'의 매개변수로 할당할 수 없다. 
-      객체 리터럴은 알려진 속성만 명시할 수 있으며,
-      'type'은 'Action' 타입에 존재하지 않는다.
+      (타입 '{ type: 'multiply' }'인 인수는 타입 'Action'의 매개변수로 할당할 수 없습니다. 객체 리터럴은 알려진 속성만 명시할 수 있으며, 'type'은 'Action' 타입에 존재하지 않습니다.)
     */
     dispatch({ type: 'multiply' });
   };
@@ -414,11 +404,9 @@ import useToggle from './useToggle';
 const Component: React.FC = () => {
   /*
     TypeScript Error:
-    Argument of type 'string' is not
-    assignable to parameter of type 'boolean'.
+    Argument of type 'string' is not assignable to parameter of type 'boolean'.
 
-    'string' 타입의 인수는 
-    `boolean 타입 매개변수에 할당할 수 없다.
+    ('string' 타입의 인수는 `boolean 타입 매개변수에 할당할 수 없습니다.)
   */
   const [isOn, setToggle] = useToggle("wrong type");
   return (
@@ -822,26 +810,26 @@ import { User } from './types';
 const UserDetail: React.FC<{ userId: number }> =
   ({ userId }) => {
 
-    // 사용자의 타입이 "User"가 되도록 설정한다.
-    const [user, setUser] =
-      useState<User | null>(null);
-      useEffect(() => {
-        const fetchUser = async () => {
-          try {
-            const response = await fetch(
-              `https://example.com/api/users/${userId}`
-            );
-            const userData = await response.json();
+  // 사용자의 타입이 "User"가 되도록 설정한다.
+  const [user, setUser] =
+    useState<User | null>(null);
+    useEffect(() => {
+      const fetchUser = async () => {
+        try {
+          const response = await fetch(
+            `https://example.com/api/users/${userId}`
+          );
+          const userData = await response.json();
 
-            /*
-              API로부터 얻은 userData를 "User" 타입으로 형변환한다.
-            */
-            setUser(userData as User);
-          }
-        };
-        
-        fetchUser();
-      }, [userId]);
+          /*
+            API로부터 얻은 userData를 "User" 타입으로 형변환한다.
+          */
+          setUser(userData as User);
+        }
+      };
+      
+      fetchUser();
+    }, [userId]);
 
     // 사용자 세부 정보를 렌더링한다...
 };
@@ -1004,7 +992,6 @@ export interface CreateUserRequest {
 // ...
 
 /*
-  GetUserRequest와 CreateUserRequest에 대한
-  유사한 암호화(encode)/복호화(decode) 함수들
+  GetUserRequest와 CreateUserRequest에 대한 유사한 암호화(encode)/복호화(decode) 함수들
 */
 ```
